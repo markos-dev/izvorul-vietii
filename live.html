@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Live — Izvorul Vieții · Izvor, Brașov</title>
+  <meta name="description" content="Transmisiuni live ale serviciilor Bisericii Penticostale Izvorul Vieții din Izvor, Brașov.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .live-frame { border-radius:24px; overflow:hidden; border:1px solid rgba(20,40,80,.1);
+      box-shadow:0 30px 60px -30px rgba(20,40,90,.4); aspect-ratio:16/9; width:100%;
+      background:linear-gradient(135deg,#0e1826,#1f2f4a); display:grid; place-items:center; color:#fff; text-align:center; padding:30px; }
+    .live-badge { display:inline-flex; align-items:center; gap:8px; padding:7px 16px; border-radius:999px;
+      background:rgba(255,80,80,.16); border:1px solid rgba(255,80,80,.4); color:#ff6b6b; font-size:12px;
+      font-weight:700; letter-spacing:2px; text-transform:uppercase; margin-bottom:20px; }
+    .live-badge .dot { width:9px;height:9px;border-radius:50%;background:#ff5252; animation:pulse 1.4s infinite; }
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+  </style>
+</head>
+<body>
+
+  <header class="nav nav--solid">
+    <nav class="nav__inner" aria-label="Navigație principală">
+      <a class="brand" href="index.html">
+        <span class="brand__mark">✦</span>
+        <span><span class="brand__name">Izvorul Vieții</span><span class="brand__sub">Biserica Creștină Penticostală</span></span>
+      </a>
+      <ul class="menu">
+        <li><a href="index.html">Acasă</a></li>
+        <li class="dropdown">
+          <button class="menu__btn" aria-haspopup="true" aria-expanded="false">Despre <span class="caret">▼</span></button>
+          <div class="dropdown__panel" role="menu">
+            <a href="despre-cine-suntem.html"><b>Cine suntem</b>Comunitatea noastră</a>
+            <a href="despre-istoric.html"><b>Istoric</b>Drumul de la început</a>
+            <a href="despre-scop-viziune.html"><b>Scop și viziune</b>Chemarea noastră</a>
+          </div>
+        </li>
+        <li><a href="evenimente.html">Evenimente</a></li>
+        <li><a class="is-active" href="live.html">Live</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <a class="btn-cta" href="contact.html">Implică-te</a>
+      <button class="burger" aria-label="Meniu"><span></span><span></span><span></span></button>
+    </nav>
+  </header>
+
+  <section class="page-head">
+    <div class="page-head__bg" style="--head-photo: url('https://images.unsplash.com/photo-1478147427282-58a87a120781?auto=format&fit=crop&w=1600&q=80');"></div>
+    <div class="wrap">
+      <div class="breadcrumb">Live</div>
+      <h1>Transmisiuni live</h1>
+      <p>Nu poți fi prezent fizic? Alătură-te nouă online la serviciile divine.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap" style="max-width:940px;">
+      <div class="reveal live-frame">
+        <div>
+          <span class="live-badge"><span class="dot"></span> Live</span>
+          <h2 class="h-serif" style="color:#fff; margin-bottom:10px;">Transmisiunea va apărea aici</h2>
+          <p class="lead" style="color:rgba(255,255,255,.8); margin-inline:auto;">Înlocuiește acest bloc cu link-ul de încorporare (embed) de pe canalul de YouTube sau Facebook al bisericii.</p>
+        </div>
+      </div>
+
+      <div class="grid grid--3" style="margin-top:40px;">
+        <article class="card reveal">
+          <div class="card__icon">▶</div>
+          <h3>YouTube</h3>
+          <p>Urmărește serviciile în direct și înregistrările pe canalul de YouTube al bisericii.</p>
+        </article>
+        <article class="card reveal d1">
+          <div class="card__icon">f</div>
+          <h3>Facebook</h3>
+          <p>Transmisiuni live și anunțuri pe pagina de Facebook a comunității.</p>
+        </article>
+        <article class="card reveal d2">
+          <div class="card__icon">☀</div>
+          <h3>Program live</h3>
+          <p>Duminică, ora 10:00 și 18:00 — serviciile divine transmise în direct.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer__bottom" style="border:0;">
+        © <span data-year>2026</span> Biserica Penticostală „Izvorul Vieții" · Izvor, Brașov ·
+        <a href="index.html">Acasă</a> · <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

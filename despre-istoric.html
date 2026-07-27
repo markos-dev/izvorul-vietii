@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Istoric — Izvorul Vieții · Izvor, Brașov</title>
+  <meta name="description" content="Istoricul Bisericii Penticostale Izvorul Vieții din cartierul Izvor, Brașov.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .timeline { position:relative; max-width:760px; margin: 0 auto; padding-left: 34px; }
+    .timeline::before { content:""; position:absolute; left:8px; top:6px; bottom:6px; width:2px;
+      background: linear-gradient(180deg,var(--blue-1),var(--blue-3)); border-radius:2px; }
+    .tl-item { position:relative; padding: 0 0 42px 10px; }
+    .tl-item::before { content:""; position:absolute; left:-34px; top:4px; width:16px;height:16px;border-radius:50%;
+      background:#fff; border:4px solid var(--blue-2); box-shadow:0 0 0 4px rgba(47,107,255,.14); }
+    .tl-item .year { font-family:var(--serif); font-weight:700; color:var(--blue-2); font-size:1.5rem; }
+    .tl-item h3 { font-family:var(--serif); margin:.2rem 0 .4rem; font-size:1.3rem; }
+    .tl-item p { color:var(--muted); line-height:1.65; margin:0; }
+  </style>
+</head>
+<body>
+
+  <header class="nav nav--solid">
+    <nav class="nav__inner" aria-label="Navigație principală">
+      <a class="brand" href="index.html">
+        <span class="brand__mark">✦</span>
+        <span><span class="brand__name">Izvorul Vieții</span><span class="brand__sub">Biserica Creștină Penticostală</span></span>
+      </a>
+      <ul class="menu">
+        <li><a href="index.html">Acasă</a></li>
+        <li class="dropdown">
+          <button class="menu__btn is-active" aria-haspopup="true" aria-expanded="false">Despre <span class="caret">▼</span></button>
+          <div class="dropdown__panel" role="menu">
+            <a href="despre-cine-suntem.html"><b>Cine suntem</b>Comunitatea noastră</a>
+            <a href="despre-istoric.html"><b>Istoric</b>Drumul de la început</a>
+            <a href="despre-scop-viziune.html"><b>Scop și viziune</b>Chemarea noastră</a>
+          </div>
+        </li>
+        <li><a href="evenimente.html">Evenimente</a></li>
+        <li><a href="live.html">Live</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <a class="btn-cta" href="contact.html">Implică-te</a>
+      <button class="burger" aria-label="Meniu"><span></span><span></span><span></span></button>
+    </nav>
+  </header>
+
+  <section class="page-head">
+    <div class="page-head__bg" style="--head-photo: url('https://images.unsplash.com/photo-1524230572899-a752b3835840?auto=format&fit=crop&w=1600&q=80');"></div>
+    <div class="wrap">
+      <div class="breadcrumb">Despre · Istoric</div>
+      <h1>Istoric</h1>
+      <p>Drumul nostru de credință — de la primele adunări până la comunitatea de astăzi din cartierul Izvor.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="center reveal" style="max-width:640px; margin-bottom:56px;">
+        <span class="eyebrow">Povestea noastră</span>
+        <h2 class="h-serif">Un izvor care nu a secat</h2>
+        <p class="lead center">De-a lungul anilor, Dumnezeu a fost credincios acestei comunități. Iată câteva repere din drumul nostru.</p>
+      </div>
+
+      <div class="timeline">
+        <div class="tl-item reveal">
+          <div class="year">Începuturile</div>
+          <h3>Primele adunări</h3>
+          <p>Un grup de familii credincioase din cartierul Izvor a început să se întâlnească pentru rugăciune și studiul Cuvântului, punând temelia unei noi comunități penticostale în Brașov.</p>
+        </div>
+        <div class="tl-item reveal">
+          <div class="year">Creșterea</div>
+          <h3>O biserică în formare</h3>
+          <p>Pe măsură ce tot mai mulți oameni au fost atinși de Evanghelie, comunitatea a crescut și s-a organizat, dând naștere bisericii „Izvorul Vieții".</p>
+        </div>
+        <div class="tl-item reveal">
+          <div class="year">Astăzi</div>
+          <h3>O casă pentru fiecare generație</h3>
+          <p>Astăzi biserica slujește copii, tineri, familii și vârstnici, rămânând un izvor de viață și speranță pentru cartierul Izvor și pentru întregul oraș.</p>
+        </div>
+      </div>
+
+      <div class="center" style="margin-top:30px;">
+        <p class="lead center" style="max-width:60ch; margin-inline:auto; color:var(--muted);">
+          <em>Detaliile și anii exacți pot fi completate de conducerea bisericii.</em>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer__bottom" style="border:0;">
+        © <span data-year>2026</span> Biserica Penticostală „Izvorul Vieții" · Izvor, Brașov ·
+        <a href="index.html">Acasă</a> · <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
