@@ -505,3 +505,70 @@ a { color: inherit; text-decoration: none; }
   .scroll-cue { animation: none; }
   html { scroll-behavior: auto; }
 }
+
+/* ============================ MESAJ ============================ */
+.section--message { background: var(--paper); }
+
+/* ============================ CARUSEL EVENIMENTE ============================ */
+.ec { position: relative; overflow: hidden; }
+.ec__viewport { position: relative; min-height: 640px; }
+.ec__slide {
+  position: absolute; inset: 0;
+  display: flex; align-items: center;
+  background-image: var(--ec-bg);
+  background-size: cover; background-position: center;
+  opacity: 0; visibility: hidden;
+  transition: opacity .7s var(--ease);
+}
+.ec__slide.is-active { opacity: 1; visibility: visible; }
+.ec__overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(90deg, rgba(12,24,20,.62) 0%, rgba(12,24,20,.34) 55%, rgba(12,24,20,.20) 100%);
+}
+.ec__inner { position: relative; z-index: 1; width: min(var(--wrap), 92%); margin-inline: auto; }
+.ec__card {
+  width: min(580px, 100%);
+  padding: clamp(30px, 4vw, 52px);
+  border-radius: 28px;
+  background: rgba(16, 26, 22, 0.30);
+  border: 1px solid rgba(255,255,255,.20);
+  box-shadow: var(--glass-shadow), inset 0 1px 0 rgba(255,255,255,.20);
+  -webkit-backdrop-filter: blur(16px) saturate(1.2);
+  backdrop-filter: blur(16px) saturate(1.2);
+  color: #fff;
+}
+.ec__eyebrow { display:inline-block; font-size:12px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color: var(--blue-1); margin-bottom:20px; }
+.ec__title { font-family: var(--serif); font-weight:700; font-size: clamp(2rem, 4.6vw, 3.15rem); line-height:1.08; margin:0 0 26px; color:#fff; text-shadow: 0 3px 18px rgba(0,0,0,.3); }
+.ec__meta { display:flex; flex-wrap:wrap; gap:14px 30px; margin-bottom:30px; }
+.ec__meta span { display:inline-flex; align-items:center; gap:10px; font-size:14.5px; color: rgba(255,255,255,.92); }
+.ec__meta svg { width:18px; height:18px; color: var(--blue-1); flex:none; }
+.ec__btn {
+  display:inline-flex; align-items:center; gap:12px;
+  padding: 15px 28px; border-radius:999px;
+  font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#fff;
+  background: rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.42);
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  transition: background .25s, transform .25s var(--ease);
+}
+.ec__btn:hover { background: rgba(255,255,255,.24); transform: translateY(-2px); }
+.ec__btn span { transition: transform .25s var(--ease); }
+.ec__btn:hover span { transform: translateX(5px); }
+
+.ec__nav { position:absolute; right: max(24px, 4vw); bottom: 34px; z-index:3; display:flex; gap:14px; }
+.ec__arrow {
+  width:54px; height:54px; border-radius:50%;
+  display:grid; place-items:center; cursor:pointer;
+  background: rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.42); color:#fff;
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  transition: background .25s, transform .2s var(--ease);
+}
+.ec__arrow:hover { background: rgba(255,255,255,.26); }
+.ec__arrow:active { transform: scale(.94); }
+.ec__arrow svg { width:20px; height:20px; }
+
+@media (max-width: 720px) {
+  .ec__viewport { min-height: 560px; }
+  .ec__card { width: 100%; }
+  .ec__nav { bottom: 20px; right: 20px; }
+  .ec__arrow { width:46px; height:46px; }
+}

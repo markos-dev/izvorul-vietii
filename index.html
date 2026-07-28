@@ -53,94 +53,59 @@
       <a class="btn-glass" href="contact.html">Implică-te</a>
     </div>
 
-    <a class="scroll-cue" href="#valori" aria-label="Derulează">⌄</a>
+    <a class="scroll-cue" href="#mesaj" aria-label="Derulează">⌄</a>
   </section>
 
-  <!-- ===================== VALORI ===================== -->
-  <section class="section section--tint" id="valori">
+  <!-- ===================== MESAJ (text cu highlight la scroll) ===================== -->
+  <section class="section section--message" id="mesaj">
     <div class="wrap">
-      <div class="center reveal" style="max-width:660px;">
-        <span class="eyebrow">Ce ne definește</span>
-        <h2 class="h-serif">Valorile noastre</h2>
-        <p class="lead center">Tot ce facem izvorăște din dragostea lui Dumnezeu și din dorința de a o împărtăși mai departe.</p>
-      </div>
-
-      <div class="grid grid--3" style="margin-top:56px;">
-        <article class="card reveal">
-          <div class="card__icon">✝</div>
-          <h3>Credință</h3>
-          <p>Credem în Evanghelia lui Isus Hristos și trăim după învățătura Sfintelor Scripturi.</p>
-        </article>
-        <article class="card reveal d1">
-          <div class="card__icon">♥</div>
-          <h3>Dragoste</h3>
-          <p>Ne primim unii pe alții cu brațele deschise, așa cum am fost primiți de Dumnezeu.</p>
-        </article>
-        <article class="card reveal d2">
-          <div class="card__icon">✋</div>
-          <h3>Slujire</h3>
-          <p>Slujim aproapelui prin fapte concrete, în biserică și în comunitatea din Izvor.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== PARALLAX VERSET ===================== -->
-  <section class="parallax" style="background-image: url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1600&q=80');">
-    <div class="wrap">
-      <blockquote class="verse reveal">
-        „Iar apa pe care i-o voi da Eu se va preface în el într-un izvor de apă, care va țâșni în viața veșnică."
-        <cite>Ioan 4:14</cite>
-      </blockquote>
-    </div>
-  </section>
-
-  <!-- ===================== HIGHLIGHT TEXT ===================== -->
-  <section class="section">
-    <div class="wrap center">
-      <p class="highlight-text center">
-        Fiecare om are un <span class="blue">scop</span>. La Izvorul Vieții descoperi cine ești cu adevărat și pentru ce ai fost <span class="blue">creat</span>.
+      <p class="highlight-text" style="max-width:940px; margin-inline:auto; text-align:justify;">
+        Suntem o comunitate dedicată valorilor creștine, un loc unde fiecare persoană își poate găsi pacea și scopul în dragostea lui Dumnezeu. Izvorul Vieții este mai mult decât un nume; este promisiunea unei experiențe spirituale autentice care transformă inimi și construiește viitorul împreună, zi de zi.
       </p>
     </div>
   </section>
 
-  <!-- ===================== EVENIMENTE (teaser) ===================== -->
-  <section class="section section--tint">
-    <div class="wrap">
-      <div class="center reveal" style="max-width:660px;">
-        <span class="eyebrow">Ne întâlnim</span>
-        <h2 class="h-serif">Vino alături de noi</h2>
-        <p class="lead center">Ușile bisericii sunt deschise pentru tine. Te așteptăm la serviciile divine din fiecare săptămână.</p>
-      </div>
-      <div class="grid grid--3" style="margin-top:56px;">
-        <article class="card reveal">
-          <div class="card__icon">☀</div>
-          <h3>Duminică · 10:00</h3>
-          <p>Serviciul divin de dimineață — închinare, rugăciune și predicarea Cuvântului.</p>
-        </article>
-        <article class="card reveal d1">
-          <div class="card__icon">✦</div>
-          <h3>Duminică · 18:00</h3>
-          <p>Serviciul de seară — părtășie, mărturii și cântări de laudă.</p>
-        </article>
-        <article class="card reveal d2">
-          <div class="card__icon">☾</div>
-          <h3>Marți · 18:00</h3>
-          <p>Seară de rugăciune și studiu biblic pentru întreaga familie.</p>
-        </article>
-      </div>
-      <div class="center" style="margin-top:40px;">
-        <a class="btn-cta" href="evenimente.html">Vezi toate evenimentele</a>
-      </div>
-    </div>
-  </section>
+  <!-- ===================== CARUSEL EVENIMENTE ===================== -->
+  <section class="ec" aria-roledescription="carusel" aria-label="Evenimente">
+    <div class="ec__viewport">
 
-  <!-- ===================== CTA FINAL ===================== -->
-  <section class="parallax" style="background-image: url('https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=1600&q=80'); padding-block: clamp(80px,12vw,150px);">
-    <div class="wrap reveal">
-      <h2 class="h-serif center" style="max-width:16ch; margin-inline:auto;">Ai un loc pregătit aici</h2>
-      <p class="lead center" style="margin:18px auto 34px;">Fie că ești la început de drum sau cauți o casă de credință, te așteptăm cu drag.</p>
-      <div class="center"><a class="btn-glass" href="contact.html">Contactează-ne</a></div>
+      <!-- Slide 1 — Eveniment viitor -->
+      <article class="ec__slide is-active" style="--ec-bg:url('https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=1600&q=80');">
+        <div class="ec__overlay"></div>
+        <div class="ec__inner">
+          <div class="ec__card">
+            <span class="ec__eyebrow">Evenimente viitoare</span>
+            <h2 class="ec__title">Seară Specială de Laudă și Închinare</h2>
+            <div class="ec__meta">
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> 24 Martie, Ora 18:00</span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 5-8 12-8 12s-8-7-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg> Sanctuarul Principal</span>
+            </div>
+            <a class="ec__btn" href="evenimente.html">Detalii eveniment <span>→</span></a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Slide 2 — Arhivă eveniment -->
+      <article class="ec__slide" style="--ec-bg:url('https://images.unsplash.com/photo-1507692049790-de58290a4334?auto=format&fit=crop&w=1600&q=80');">
+        <div class="ec__overlay"></div>
+        <div class="ec__inner">
+          <div class="ec__card">
+            <span class="ec__eyebrow">Arhivă evenimente</span>
+            <h2 class="ec__title">Retrospectivă: Misiunea Speranței</h2>
+            <div class="ec__meta">
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> Octombrie 2023</span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 3.2 2.6 14.8 0 18M12 3c-2.6 3.2-2.6 14.8 0 18"/></svg> Comunitate</span>
+            </div>
+            <a class="ec__btn" href="evenimente.html">Vezi album foto <span>→</span></a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="ec__nav">
+      <button class="ec__arrow" data-dir="prev" aria-label="Evenimentul anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></button>
+      <button class="ec__arrow" data-dir="next" aria-label="Evenimentul următor"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
     </div>
   </section>
 

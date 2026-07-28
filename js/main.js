@@ -90,6 +90,26 @@
     card.addEventListener("mouseleave", function () { card.style.transform = ""; });
   }
 
+  /* ---------- Carusel evenimente ---------- */
+  var carousel = document.querySelector(".ec");
+  if (carousel) {
+    var ecSlides = Array.prototype.slice.call(carousel.querySelectorAll(".ec__slide"));
+    if (ecSlides.length > 1) {
+      var ecIndex = 0;
+      ecSlides.forEach(function (s, k) { if (s.classList.contains("is-active")) ecIndex = k; });
+      var ecGo = function (n) {
+        ecSlides[ecIndex].classList.remove("is-active");
+        ecIndex = (n + ecSlides.length) % ecSlides.length;
+        ecSlides[ecIndex].classList.add("is-active");
+      };
+      carousel.querySelectorAll(".ec__arrow").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          ecGo(btn.getAttribute("data-dir") === "next" ? ecIndex + 1 : ecIndex - 1);
+        });
+      });
+    }
+  }
+
   /* ---------- Anul curent în footer ---------- */
   document.querySelectorAll("[data-year]").forEach(function (el) {
     el.textContent = new Date().getFullYear();
