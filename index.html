@@ -65,44 +65,9 @@
     </div>
   </section>
 
-  <!-- ===================== CARUSEL EVENIMENTE ===================== -->
-  <section class="ec" aria-roledescription="carusel" aria-label="Evenimente">
-    <div class="ec__viewport">
-
-      <!-- Slide 1 — Eveniment viitor -->
-      <article class="ec__slide is-active" style="--ec-bg:url('https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=1600&q=80');">
-        <div class="ec__overlay"></div>
-        <div class="ec__inner">
-          <div class="ec__card">
-            <span class="ec__eyebrow">Evenimente viitoare</span>
-            <h2 class="ec__title">Seară Specială de Laudă și Închinare</h2>
-            <div class="ec__meta">
-              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> 24 Martie, Ora 18:00</span>
-              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 5-8 12-8 12s-8-7-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg> Sanctuarul Principal</span>
-            </div>
-            <a class="ec__btn" href="evenimente.html">Detalii eveniment <span>→</span></a>
-          </div>
-        </div>
-      </article>
-
-      <!-- Slide 2 — Arhivă eveniment -->
-      <article class="ec__slide" style="--ec-bg:url('https://images.unsplash.com/photo-1507692049790-de58290a4334?auto=format&fit=crop&w=1600&q=80');">
-        <div class="ec__overlay"></div>
-        <div class="ec__inner">
-          <div class="ec__card">
-            <span class="ec__eyebrow">Arhivă evenimente</span>
-            <h2 class="ec__title">Retrospectivă: Misiunea Speranței</h2>
-            <div class="ec__meta">
-              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> Octombrie 2023</span>
-              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 3.2 2.6 14.8 0 18M12 3c-2.6 3.2-2.6 14.8 0 18"/></svg> Comunitate</span>
-            </div>
-            <a class="ec__btn" href="evenimente.html">Vezi album foto <span>→</span></a>
-          </div>
-        </div>
-      </article>
-
-    </div>
-
+  <!-- ===================== CARUSEL EVENIMENTE (generat din js/events.js) ===================== -->
+  <section class="ec" id="eventsCarousel" aria-roledescription="carusel" aria-label="Evenimente">
+    <div class="ec__viewport" id="ecViewport"><!-- slide-urile sunt generate automat din js/events.js --></div>
     <div class="ec__nav">
       <button class="ec__arrow" data-dir="prev" aria-label="Evenimentul anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></button>
       <button class="ec__arrow" data-dir="next" aria-label="Evenimentul următor"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
@@ -149,6 +114,7 @@
     </div>
   </footer>
 
+  <script src="js/events.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
