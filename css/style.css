@@ -577,16 +577,33 @@ a { color: inherit; text-decoration: none; }
 /* ============================ COUNTDOWN ============================ */
 .countdown { padding: clamp(70px, 10vw, 120px) 0; background: var(--paper); }
 .countdown .eyebrow { display:block; text-align:center; }
-.cd { display:flex; justify-content:center; align-items:flex-start; gap: clamp(16px, 5vw, 70px); margin: 34px 0 28px; flex-wrap:wrap; }
-.cd__unit { display:flex; flex-direction:column; align-items:center; min-width: 64px; }
-.cd__num {
-  font-family: var(--sans); font-weight: 200;
-  font-size: clamp(3.2rem, 12vw, 8rem); line-height: 1;
-  color: var(--ink); letter-spacing: 1px;
-  font-variant-numeric: tabular-nums; font-feature-settings: "tnum";
+.cd {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: clamp(10px, 3vw, 40px);
+  max-width: 1120px;          /* lățime dublă — countdown-ul se întinde pe tot rândul */
+  width: 100%;
+  margin: 42px auto 30px;
 }
-.cd__label { margin-top: 14px; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); }
-.cd__note { text-align:center; font-family: var(--serif); font-style: italic; font-size: clamp(1.05rem, 2vw, 1.35rem); color: var(--ink-soft); margin: 8px 0 0; }
+.cd__unit { flex: 1 1 0; display: flex; flex-direction: column; align-items: center; }
+.cd__num {
+  display: block;
+  font-family: var(--sans);
+  font-weight: 200;
+  font-size: clamp(3rem, 11vw, 9rem);
+  line-height: 1;
+  color: var(--ink);
+  letter-spacing: 1px;
+  font-variant-numeric: tabular-nums;
+}
+.cd__label { margin-top: 16px; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); }
+.cd__note { text-align: center; font-family: var(--serif); font-style: italic; font-size: clamp(1.05rem, 2vw, 1.35rem); color: var(--ink-soft); margin: 10px 0 0; }
+@media (max-width: 640px) {
+  .cd { flex-wrap: wrap; gap: 26px 8px; }
+  .cd__unit { flex: 0 0 46%; }
+  .cd__num { font-size: clamp(2.6rem, 22vw, 4.4rem); }
+}
 
 /* ============================ ALBUM FOTO (galerie) ============================ */
 .gallery { display:grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 30px; }
