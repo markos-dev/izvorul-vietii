@@ -617,3 +617,11 @@ a { color: inherit; text-decoration: none; }
   .gallery { grid-template-columns: repeat(2, 1fr); gap: 10px; }
   .gallery img { height: 150px; }
 }
+
+/* ============================ VERSETUL ZILEI — poză cu blur ============================ */
+/* Blur aplicat peste poza de fundal (fixă), textul rămâne clar deasupra. */
+.parallax--blur::before {
+  -webkit-backdrop-filter: blur(7px) brightness(.92);
+  backdrop-filter: blur(7px) brightness(.92);
+  background: linear-gradient(180deg, rgba(10,18,34,.62), rgba(10,18,34,.5));
+}
