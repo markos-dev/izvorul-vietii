@@ -16,6 +16,8 @@ window.DONATION_LINKS = {
   "10-lei":   "",   // ex: "https://buy.stripe.com/xxxxxxxx"
   "50-lei":   "",
   "100-lei":  "",
+  "1000-lei": "",
+  "5000-lei": "",
   "10-eur":   "",
   "50-eur":   "",
   "100-eur":  "",
