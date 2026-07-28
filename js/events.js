@@ -61,6 +61,12 @@ window.IZVOR_EVENTS = [
       '<span>' + ic(e.meta2.icon) + ' ' + e.meta2.text + '</span>' +
       '</div>';
   }
+  // Linkul butonului: dacă evenimentul are album, duce automat la ancora albumului
+  // de pe pagina Evenimente (funcționează dinamic pentru orice eveniment nou).
+  function hrefFor(e) {
+    if (e.album && e.album.length && e.id) return "evenimente.html#album-" + e.id;
+    return e.link || "evenimente.html";
+  }
 
   var EVENTS = (window.IZVOR_EVENTS || []).slice();
   // sortare descrescătoare după dată (cel mai nou primul)
@@ -77,7 +83,7 @@ window.IZVOR_EVENTS = [
         '<span class="ec__eyebrow">' + e.category + '</span>' +
         '<h2 class="ec__title">' + e.title + '</h2>' +
         metaRow(e) +
-        '<a class="ec__btn" href="' + e.link + '">' + e.cta + ' <span>&rarr;</span></a>' +
+        '<a class="ec__btn" href="' + hrefFor(e) + '">' + e.cta + ' <span>&rarr;</span></a>' +
         '</div></div></article>';
     }).join("");
 
@@ -115,7 +121,7 @@ window.IZVOR_EVENTS = [
         '<span>' + ic(e.meta1.icon) + ' ' + e.meta1.text + '</span>' +
         '<span>' + ic(e.meta2.icon) + ' ' + e.meta2.text + '</span>' +
         '</div>' +
-        '<a class="btn-cta" href="' + e.link + '">' + e.cta + '</a>' +
+        '<a class="btn-cta" href="' + hrefFor(e) + '">' + e.cta + '</a>' +
         '</div></article>';
     }).join("");
   }
@@ -139,5 +145,15 @@ window.IZVOR_EVENTS = [
         '</div>' +
         '</div></section>';
     }).join("");
+
+    // Dacă URL-ul conține o ancoră către un album (ex. #album-misiunea-sperantei),
+    // derulează la el DUPĂ ce albumele au fost generate.
+    var hash = window.location.hash;
+    if (hash && hash.indexOf("#album-") === 0) {
+      window.setTimeout(function () {
+        var t = document.getElementById(hash.slice(1));
+        if (t) t.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 90);
+    }
   }
 })();
