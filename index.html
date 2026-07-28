@@ -7,7 +7,7 @@
   <meta name="description" content="Biserica Penticostală Izvorul Vieții din cartierul Izvor, Brașov — o comunitate dedicată credinței, dragostei și slujirii aproapelui.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600;1,700&family=Inter:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -71,6 +71,31 @@
     <div class="ec__nav">
       <button class="ec__arrow" data-dir="prev" aria-label="Evenimentul anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></button>
       <button class="ec__arrow" data-dir="next" aria-label="Evenimentul următor"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+    </div>
+  </section>
+
+  <!-- ===================== COUNTDOWN — următorul serviciu ===================== -->
+  <section class="countdown">
+    <div class="wrap center">
+      <span class="eyebrow">Următorul serviciu divin</span>
+      <div class="cd" id="countdown" aria-live="polite">
+        <div class="cd__unit"><span class="cd__num" data-cd="days">00</span><span class="cd__label">Zile</span></div>
+        <div class="cd__unit"><span class="cd__num" data-cd="hours">00</span><span class="cd__label">Ore</span></div>
+        <div class="cd__unit"><span class="cd__num" data-cd="mins">00</span><span class="cd__label">Minute</span></div>
+        <div class="cd__unit"><span class="cd__num" data-cd="secs">00</span><span class="cd__label">Secunde</span></div>
+      </div>
+      <p class="cd__note">Duminică, Ora 10:00 — Vă așteptăm cu drag!</p>
+    </div>
+  </section>
+
+  <!-- ===================== VERSETUL ZILEI (fundal fix) ===================== -->
+  <section class="parallax" id="verset" style="background-image: url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1600&q=80');">
+    <div class="wrap">
+      <span class="eyebrow" style="color:var(--blue-1); display:block; text-align:center; margin-bottom:22px;">Versetul zilei</span>
+      <blockquote class="verse" id="dailyVerse">
+        „Iar apa pe care i-o voi da Eu se va preface în el într-un izvor de apă, care va țâșni în viața veșnică."
+        <cite>Ioan 4:14</cite>
+      </blockquote>
     </div>
   </section>
 

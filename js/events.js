@@ -24,14 +24,23 @@ window.IZVOR_EVENTS = [
     image: "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=1600&q=80"
   },
   {
+    id: "misiunea-sperantei",
     category: "Arhivă evenimente",
     title: "Retrospectivă: Misiunea Speranței",
     iso: "2023-10-01",
     meta1: { icon: "calendar", text: "Octombrie 2023" },
     meta2: { icon: "globe", text: "Comunitate" },
     cta: "Vezi album foto",
-    link: "evenimente.html",
-    image: "https://images.unsplash.com/photo-1507692049790-de58290a4334?auto=format&fit=crop&w=1600&q=80"
+    link: "evenimente.html#album-misiunea-sperantei",
+    image: "https://images.unsplash.com/photo-1507692049790-de58290a4334?auto=format&fit=crop&w=1600&q=80",
+    album: [
+      "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=700&q=80",
+      "https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?auto=format&fit=crop&w=700&q=80",
+      "https://images.unsplash.com/photo-1438032005730-c779502df39b?auto=format&fit=crop&w=700&q=80",
+      "https://images.unsplash.com/photo-1508963493744-76fce69379c0?auto=format&fit=crop&w=700&q=80",
+      "https://images.unsplash.com/photo-1524230572899-a752b3835840?auto=format&fit=crop&w=700&q=80",
+      "https://images.unsplash.com/photo-1490730141103-6cac27aaab94?auto=format&fit=crop&w=700&q=80"
+    ]
   }
 ];
 
@@ -108,6 +117,27 @@ window.IZVOR_EVENTS = [
         '</div>' +
         '<a class="btn-cta" href="' + e.link + '">' + e.cta + '</a>' +
         '</div></article>';
+    }).join("");
+  }
+
+  /* --- Albume foto (evenimentele din arhivă, pe pagina Evenimente) --- */
+  var albums = document.getElementById("eventsAlbums");
+  if (albums) {
+    var withAlbum = EVENTS.filter(function (e) { return e.album && e.album.length; });
+    albums.innerHTML = withAlbum.map(function (e) {
+      return '<section class="section" id="album-' + (e.id || "") + '">' +
+        '<div class="wrap">' +
+        '<div class="reveal" style="margin-bottom:6px;">' +
+        '<span class="eyebrow">Album foto</span>' +
+        '<h2 class="h-serif" style="margin-bottom:8px;">' + e.title + '</h2>' +
+        '<p class="lead" style="color:var(--muted);">' + e.meta1.text + ' · ' + e.meta2.text + '</p>' +
+        '</div>' +
+        '<div class="gallery reveal">' +
+        e.album.map(function (src) {
+          return '<img src="' + src + '" alt="' + e.title + '" loading="lazy">';
+        }).join("") +
+        '</div>' +
+        '</div></section>';
     }).join("");
   }
 })();

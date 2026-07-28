@@ -90,6 +90,55 @@
     card.addEventListener("mouseleave", function () { card.style.transform = ""; });
   }
 
+  /* ---------- Countdown până la următorul serviciu (Duminică 10:00) ---------- */
+  var cd = document.getElementById("countdown");
+  if (cd) {
+    var pad = function (n) { return (n < 10 ? "0" : "") + n; };
+    var nextService = function () {
+      var now = new Date();
+      var d = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 10, 0, 0, 0);
+      var add = (7 - d.getDay()) % 7;               // 0 = Duminică
+      if (add === 0 && now.getTime() >= d.getTime()) add = 7;
+      d.setDate(d.getDate() + add);
+      return d;
+    };
+    var target = nextService();
+    var setUnit = function (k, v) {
+      var el = cd.querySelector('[data-cd="' + k + '"]');
+      if (el) el.textContent = v;
+    };
+    var tick = function () {
+      var now = new Date();
+      if (now.getTime() >= target.getTime()) target = nextService();
+      var s = Math.max(0, Math.floor((target.getTime() - now.getTime()) / 1000));
+      setUnit("days", pad(Math.floor(s / 86400)));
+      setUnit("hours", pad(Math.floor((s % 86400) / 3600)));
+      setUnit("mins", pad(Math.floor((s % 3600) / 60)));
+      setUnit("secs", pad(s % 60));
+    };
+    tick();
+    setInterval(tick, 1000);
+  }
+
+  /* ---------- Versetul zilei ---------- */
+  var verseEl = document.getElementById("dailyVerse");
+  if (verseEl) {
+    var verses = [
+      ["Domnul este Păstorul meu: nu voi duce lipsă de nimic.", "Psalmul 23:1"],
+      ["Eu sunt Calea, Adevărul și Viața.", "Ioan 14:6"],
+      ["Toate lucrurile sunt cu putință celui ce crede.", "Marcu 9:23"],
+      ["Dumnezeu este dragoste.", "1 Ioan 4:8"],
+      ["Bucurați-vă totdeauna în Domnul!", "Filipeni 4:4"],
+      ["Cereți, și vi se va da; căutați, și veți găsi.", "Matei 7:7"],
+      ["Domnul este lumina și mântuirea mea: de cine să mă tem?", "Psalmul 27:1"]
+    ];
+    var d0 = new Date();
+    var start = new Date(d0.getFullYear(), 0, 0);
+    var dayOfYear = Math.floor((d0.getTime() - start.getTime()) / 86400000);
+    var v = verses[dayOfYear % verses.length];
+    verseEl.innerHTML = "„" + v[0] + "”<cite>" + v[1] + "</cite>";
+  }
+
   /* ---------- Anul curent în footer ---------- */
   document.querySelectorAll("[data-year]").forEach(function (el) {
     el.textContent = new Date().getFullYear();
