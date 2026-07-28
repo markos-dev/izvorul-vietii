@@ -62,15 +62,24 @@
     });
   });
 
-  const words = Array.prototype.slice.call(document.querySelectorAll(".highlight-text .w"));
-  if (words.length) {
+  const hlBlocks = Array.prototype.slice.call(document.querySelectorAll(".highlight-text"));
+  if (hlBlocks.length) {
     const updateHighlight = function () {
       const vh = window.innerHeight;
-      words.forEach(function (w) {
-        const r = w.getBoundingClientRect();
-        // aprinde cuvântul când depășește ~68% din înălțimea ecranului
-        if (r.top < vh * 0.68) w.classList.add("on");
-        else w.classList.remove("on");
+      hlBlocks.forEach(function (block) {
+        const ws = block.querySelectorAll(".w");
+        if (!ws.length) return;
+        const rect = block.getBoundingClientRect();
+        // progres de la 0 (blocul intră în ecran) la 1 (blocul a fost parcurs)
+        const travel = vh * 0.55 + rect.height;
+        const scrolled = vh * 0.82 - rect.top;
+        const progress = Math.max(0, Math.min(1, scrolled / travel));
+        // aprinde cuvintele progresiv, în ordinea citirii (nu tot rândul deodată)
+        const lit = Math.round(progress * ws.length);
+        for (let i = 0; i < ws.length; i++) {
+          if (i < lit) ws[i].classList.add("on");
+          else ws[i].classList.remove("on");
+        }
       });
     };
     window.addEventListener("scroll", updateHighlight, { passive: true });
