@@ -24,6 +24,17 @@ window.IZVOR_EVENTS = [
     image: "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=1600&q=80"
   },
   {
+    id: "atelier-creativ-de-paste",
+    category: "Arhivă evenimente",
+    title: "Atelier Creativ de Paște",
+    iso: "2026-04-11",
+    meta1: { icon: "clock", text: "11 Aprilie 2026, Ora 10:00" },
+    meta2: { icon: "pin", text: "Str. Nucului nr. 13" },
+    cta: "Detalii eveniment",
+    link: "evenimente.html",
+    image: "images/eveniment-atelier-creativ-paste.jpg"
+  },
+  {
     id: "misiunea-sperantei",
     category: "Arhivă evenimente",
     title: "Retrospectivă: Misiunea Speranței",
@@ -77,7 +88,7 @@ window.IZVOR_EVENTS = [
   if (viewport && EVENTS.length) {
     viewport.innerHTML = EVENTS.map(function (e, i) {
       return '<article class="ec__slide' + (i === 0 ? ' is-active' : '') +
-        '" style="--ec-bg:url(\'' + e.image + '\');">' +
+        '" style="background-image:url(\'' + e.image + '\');">' +
         '<div class="ec__overlay"></div>' +
         '<div class="ec__inner"><div class="ec__card">' +
         '<span class="ec__eyebrow">' + e.category + '</span>' +

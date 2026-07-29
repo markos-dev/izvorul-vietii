@@ -92,7 +92,11 @@
 .ec__slide {
   position: absolute; inset: 0;
   display: flex; align-items: center;
-  background-image: var(--ec-bg);
+  /* background-image e setat inline (style=) direct din JS, nu prin
+     var(--ec-bg): un url() relativ într-o proprietate custom se rezolvă
+     relativ la foaia de stil unde e folosit var(), nu la pagina HTML —
+     ceea ce rupea imaginile locale (relative), deși cele de pe Unsplash
+     (absolute) mergeau din întâmplare. */
   background-size: cover; background-position: center;
   background-attachment: fixed;   /* PARALLAX — fundal fix, scroll-ul curge peste */
   opacity: 0; visibility: hidden;
