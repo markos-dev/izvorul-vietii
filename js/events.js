@@ -55,7 +55,7 @@ window.IZVOR_EVENTS = [
     iso: "2026-04-11",
     meta1: { icon: "clock", text: "11 Aprilie 2026, Ora 10:00" },
     meta2: { icon: "pin", text: "Str. Nucului nr. 13" },
-    cta: "Detalii eveniment",
+    cta: "Vezi album foto",
     link: "evenimente.html",
     image: "images/eveniment-atelier-creativ-paste.jpg"
     // album: adaugă din nou aici un array cu pozele noi, când sunt gata —
