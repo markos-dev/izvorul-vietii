@@ -54,7 +54,7 @@ window.IZVOR_EVENTS = [
     category: "Arhivă evenimente",
     title: "Atelier Creativ de Paște",
     iso: "2026-04-11",
-    meta1: { icon: "clock", text: "11 Aprilie 2026, Ora 10:00" },
+    meta1: { icon: "clock", text: "11 Aprilie 2026, Ora 11:00" },
     meta2: { icon: "pin", text: "Str. Nucului nr. 13" },
     cta: "Vezi album foto",
     link: "evenimente.html",
