@@ -49,6 +49,7 @@
   width:100%; height: 230px; object-fit: cover; border-radius: 16px;
   box-shadow: 0 18px 40px -26px rgba(20,40,90,.4);
   transition: transform .35s var(--ease), box-shadow .35s var(--ease);
+  cursor: zoom-in;
 }
 .gallery img:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 26px 50px -24px rgba(20,40,90,.5); }
 @media (max-width: 720px) {
@@ -58,3 +59,48 @@
 
 /* Ancorele albumelor — să nu rămână ascunse sub meniul fix la derulare */
 [id^="album-"] { scroll-margin-top: 100px; }
+
+/* ============================ LIGHTBOX (poză mărită + navigare) ============================ */
+.lightbox {
+  position: fixed; inset: 0; z-index: 999;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(8,12,10,.94);
+  opacity: 0; visibility: hidden;
+  transition: opacity .25s var(--ease);
+  padding: 40px;
+}
+.lightbox.is-open { opacity: 1; visibility: visible; }
+.lightbox__img {
+  max-width: min(1100px, 90vw); max-height: 84vh;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 30px 80px -20px rgba(0,0,0,.6);
+  opacity: 0; transform: scale(.97);
+  transition: opacity .2s var(--ease), transform .2s var(--ease);
+}
+.lightbox.is-open .lightbox__img { opacity: 1; transform: scale(1); }
+.lightbox__close,
+.lightbox__arrow {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.32); color: #fff;
+  cursor: pointer;
+  display: grid; place-items: center;
+  transition: background .2s;
+}
+.lightbox__close:hover, .lightbox__arrow:hover { background: rgba(255,255,255,.26); }
+.lightbox__close { top: 22px; right: 26px; width: 46px; height: 46px; font-size: 26px; line-height: 1; }
+.lightbox__arrow { top: 50%; transform: translateY(-50%); width: 54px; height: 54px; font-size: 22px; }
+.lightbox__arrow--prev { left: 22px; }
+.lightbox__arrow--next { right: 22px; }
+.lightbox__counter {
+  position: absolute; bottom: 26px; left: 50%; transform: translateX(-50%);
+  color: rgba(255,255,255,.85); font-size: 13px; letter-spacing: 1.5px;
+}
+@media (max-width: 640px) {
+  .lightbox { padding: 16px; }
+  .lightbox__arrow { width: 44px; height: 44px; font-size: 18px; }
+  .lightbox__arrow--prev { left: 8px; }
+  .lightbox__arrow--next { right: 8px; }
+  .lightbox__close { top: 12px; right: 14px; width: 40px; height: 40px; font-size: 22px; }
+}

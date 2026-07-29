@@ -180,9 +180,9 @@ window.IZVOR_EVENTS = [
         '<h2 class="h-serif" style="margin-bottom:8px;">' + e.title + '</h2>' +
         '<p class="lead" style="color:var(--muted);">' + e.meta1.text + ' · ' + e.meta2.text + '</p>' +
         '</div>' +
-        '<div class="gallery reveal">' +
-        e.album.map(function (src) {
-          return '<img src="' + src + '" alt="' + e.title + '" loading="lazy">';
+        '<div class="gallery reveal" data-album-id="' + (e.id || "") + '">' +
+        e.album.map(function (src, i) {
+          return '<img src="' + src + '" alt="' + e.title + '" loading="lazy" data-idx="' + i + '">';
         }).join("") +
         '</div>' +
         '</div></section>';
@@ -197,5 +197,67 @@ window.IZVOR_EVENTS = [
         if (t) t.scrollIntoView({ behavior: "smooth", block: "start" });
       }, 90);
     }
+
+    /* --- Lightbox: click pe o poză din album → se mărește, navigare stânga/dreapta --- */
+    var albumMap = {};
+    withAlbum.forEach(function (e) { albumMap[e.id || ""] = e.album; });
+
+    var lightbox = document.createElement("div");
+    lightbox.className = "lightbox";
+    lightbox.innerHTML =
+      '<button class="lightbox__close" aria-label="Închide">&times;</button>' +
+      '<button class="lightbox__arrow lightbox__arrow--prev" aria-label="Poza anterioară">&larr;</button>' +
+      '<img class="lightbox__img" alt="">' +
+      '<button class="lightbox__arrow lightbox__arrow--next" aria-label="Poza următoare">&rarr;</button>' +
+      '<div class="lightbox__counter"></div>';
+    document.body.appendChild(lightbox);
+
+    var lbImg = lightbox.querySelector(".lightbox__img");
+    var lbCounter = lightbox.querySelector(".lightbox__counter");
+    var currentAlbum = [];
+    var currentIdx = 0;
+
+    function updateLightbox() {
+      if (!currentAlbum.length) return;
+      lbImg.src = currentAlbum[currentIdx];
+      lbCounter.textContent = (currentIdx + 1) + " / " + currentAlbum.length;
+    }
+    function openLightbox(albumId, idx) {
+      currentAlbum = albumMap[albumId] || [];
+      currentIdx = idx;
+      if (!currentAlbum.length) return;
+      updateLightbox();
+      lightbox.classList.add("is-open");
+      document.body.style.overflow = "hidden";
+    }
+    function closeLightbox() {
+      lightbox.classList.remove("is-open");
+      document.body.style.overflow = "";
+    }
+    function navLightbox(delta) {
+      if (!currentAlbum.length) return;
+      currentIdx = (currentIdx + delta + currentAlbum.length) % currentAlbum.length;
+      updateLightbox();
+    }
+
+    albums.addEventListener("click", function (ev) {
+      var img = ev.target.closest("img[data-idx]");
+      if (!img) return;
+      var galleryEl = img.closest(".gallery");
+      var albumId = galleryEl ? galleryEl.getAttribute("data-album-id") : "";
+      openLightbox(albumId, parseInt(img.getAttribute("data-idx"), 10) || 0);
+    });
+    lightbox.querySelector(".lightbox__close").addEventListener("click", closeLightbox);
+    lightbox.querySelector(".lightbox__arrow--prev").addEventListener("click", function () { navLightbox(-1); });
+    lightbox.querySelector(".lightbox__arrow--next").addEventListener("click", function () { navLightbox(1); });
+    lightbox.addEventListener("click", function (ev) {
+      if (ev.target === lightbox) closeLightbox();
+    });
+    document.addEventListener("keydown", function (ev) {
+      if (!lightbox.classList.contains("is-open")) return;
+      if (ev.key === "Escape") closeLightbox();
+      else if (ev.key === "ArrowLeft") navLightbox(-1);
+      else if (ev.key === "ArrowRight") navLightbox(1);
+    });
   }
 })();
