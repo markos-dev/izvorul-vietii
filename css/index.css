@@ -7,6 +7,7 @@
 .hero {
   position: relative;
   min-height: 100vh;
+  min-height: 100svh; /* pe mobil evită "saltul" hero-ului când bara de adresă apare/dispare */
   display: grid;
   place-items: center;
   padding: 140px 0 90px;
@@ -200,8 +201,8 @@
   background: linear-gradient(180deg, rgba(10,18,34,.48), rgba(10,18,34,.38));
 }
 
-@media (hover: none) {
-  .hero__bg, .ec__slide { background-attachment: scroll; }
+@media (hover: none), (pointer: coarse), (max-width: 940px) {
+  .hero__bg, .ec__slide { background-attachment: scroll !important; }
 }
 @media (prefers-reduced-motion: reduce) {
   .scroll-cue { animation: none; }

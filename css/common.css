@@ -384,9 +384,12 @@ a { color: inherit; text-decoration: none; }
   .nav--solid .dropdown__panel { background: transparent; }
 }
 
-/* Parallax fixed e nervos pe touch — degradăm elegant */
-@media (hover: none) {
-  .parallax, .page-head__bg { background-attachment: scroll; }
+/* Parallax fixed e nervos pe mobil/touch — degradăm elegant.
+   Nu ne bazăm doar pe (hover: none), pentru că unele telefoane/tablete
+   sau browsere in-app raportează greșit hover:hover; adăugăm și
+   (pointer: coarse) și un prag de lățime ca plasă de siguranță. */
+@media (hover: none), (pointer: coarse), (max-width: 940px) {
+  .parallax, .page-head__bg { background-attachment: scroll !important; }
 }
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity:1; transform:none; }
