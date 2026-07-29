@@ -14,6 +14,16 @@
    ========================================================= */
 window.IZVOR_EVENTS = [
   {
+    category: "Arhivă evenimente",
+    title: "Botez Nou Testamentar",
+    iso: "2026-07-19",
+    meta1: { icon: "clock", text: "19 Iulie 2026, Ora 10:00" },
+    meta2: { icon: "pin", text: "Str. Nucului nr. 13" },
+    cta: "Vezi album foto",
+    link: "https://markos-dev.github.io/izvorul-vietii/evenimente.html#album-misiunea-sperantei",
+    image: "images/eveniment-botez-nou-testamentar.jpg"
+  },
+  {
     category: "Evenimente viitoare",
     title: "Seară Specială de Laudă și Închinare",
     iso: "2026-03-24",
