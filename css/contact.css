@@ -1,35 +1,135 @@
 /* =========================================================
    Pagina CONTACT — stiluri specifice
-   (cardurile liderilor bisericii)
+   (hero luminos, hartă lățime completă, carduri lideri,
+   formular de contact, program săptămânal)
    ========================================================= */
 
-.leaders { display:grid; grid-template-columns: repeat(2,1fr); gap: 34px; }
-.leader {
-  padding: 40px 34px; text-align:center;
-  border-radius: 26px;
+/* ============================ HERO luminos ============================ */
+.contact-hero {
+  padding: calc(var(--nav-h) + 64px) 0 56px;
+  text-align: center;
+  background: var(--paper-2);
+}
+.contact-hero h1 { margin: 0 0 14px; }
+.contact-hero .lead { color: var(--ink-soft); }
+
+/* ============================ HARTĂ lățime completă ============================ */
+.contact-map {
+  position: relative;
+  height: clamp(320px, 42vw, 440px);
+  overflow: hidden;
+  background: #0e1620;
+}
+.contact-map__frame {
+  width: 100%; height: 100%; border: 0; display: block;
+  /* aproximare "hartă întunecată" fără cheie API Google Maps */
+  filter: invert(92%) hue-rotate(180deg) brightness(0.94) contrast(0.92) saturate(1.1);
+}
+.contact-map__open {
+  position: absolute; top: 20px; left: 20px; z-index: 2;
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 16px; border-radius: 999px;
+  background: rgba(14,20,32,.78); color: #fff; font-size: 13px; font-weight: 600;
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,.18);
+  transition: background .2s;
+}
+.contact-map__open:hover { background: rgba(14,20,32,.92); }
+.contact-map__pin {
+  position: absolute; bottom: 22px; left: 50%; transform: translateX(-50%); z-index: 2;
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 12px 22px; border-radius: 999px;
+  background: #fff; color: var(--ink); font-size: 14px; font-weight: 600;
+  box-shadow: 0 18px 40px -16px rgba(0,0,0,.5);
+  white-space: nowrap;
+}
+.contact-map__pin .ic { color: var(--blue-2); }
+@media (max-width: 640px) {
+  .contact-map__pin { font-size: 12.5px; padding: 10px 16px; max-width: 90%; white-space: normal; text-align:center; }
+}
+
+/* ============================ CARDURI LIDERI (rând orizontal) ============================ */
+.leaders-row { display:grid; grid-template-columns: repeat(2,1fr); gap: 28px; }
+.leader-card {
+  display: flex; align-items: center; gap: 22px;
+  padding: 26px; border-radius: 22px;
   background: rgba(255,255,255,.72);
   border: 1px solid rgba(20,40,80,.08);
-  box-shadow: 0 30px 60px -34px rgba(20,40,90,.4);
+  box-shadow: 0 24px 50px -30px rgba(20,40,90,.4);
   -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
 }
-.leader__photo {
-  width: 150px; height:150px; border-radius: 50%;
-  margin: 0 auto 22px;
-  display:grid; place-items:center;
+.leader-card__photo {
+  position: relative; flex: none;
+  width: 96px; height: 96px; border-radius: 20px;
+  overflow: hidden;
   background: linear-gradient(145deg, var(--paper-3), #dbe3ef);
-  border: 4px solid #fff;
-  box-shadow: 0 18px 40px -20px rgba(20,40,90,.5);
-  color: var(--blue-2); font-size: 54px;
-  overflow:hidden;
+  box-shadow: 0 14px 30px -16px rgba(20,40,90,.5);
 }
-.leader__photo img { width:100%; height:100%; object-fit: cover; }
-.leader h3 { font-family: var(--serif); font-weight:700; font-size: 1.7rem; margin:0 0 4px; }
-.leader__role { color: var(--blue-2); font-weight:600; letter-spacing:.5px; margin-bottom: 20px; }
-.leader__contact { display:flex; flex-direction:column; gap:10px; align-items:center; }
-.leader__contact a { display:inline-flex; align-items:center; gap:10px; color: var(--ink-soft); font-size: 15px; transition: color .2s;}
-.leader__contact a:hover { color: var(--blue-2); }
-.leader__contact .ic { width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background: rgba(47,107,255,.1); color: var(--blue-2); font-size:16px;}
+.leader-card__photo img { width:100%; height:100%; object-fit: cover; }
+.leader-card__badge {
+  position: absolute; bottom: -8px; right: -8px;
+  width: 32px; height: 32px; border-radius: 50%;
+  display: grid; place-items: center; font-size: 15px;
+  background: var(--blue-2); color: #fff;
+  border: 3px solid #fff;
+}
+.leader-card__info h3 { font-family: var(--serif); font-weight:700; font-size: 1.3rem; margin:0 0 3px; }
+.leader-card__role { color: var(--blue-2); font-weight:600; font-size: 13.5px; letter-spacing:.3px; margin-bottom: 12px; }
+.leader-card__info a { display:flex; align-items:center; gap:8px; color: var(--ink-soft); font-size: 14px; margin-top: 6px; transition: color .2s; }
+.leader-card__info a:hover { color: var(--blue-2); }
+.leader-card__info .ic { width:26px; height:26px; border-radius:8px; display:grid; place-items:center; background: rgba(47,107,255,.1); color: var(--blue-2); font-size:13px; flex:none; }
 
-@media (max-width: 940px) {
-  .leaders { grid-template-columns: 1fr; }
+@media (max-width: 720px) {
+  .leaders-row { grid-template-columns: 1fr; }
+  .leader-card { flex-direction: column; text-align: center; }
+  .leader-card__info a { justify-content: center; }
+}
+
+/* ============================ FORMULAR + PROGRAM ============================ */
+.contact-grid { display:grid; grid-template-columns: 1.4fr 1fr; gap: 34px; align-items: start; }
+
+.contact-form-card { padding: clamp(30px, 4vw, 44px); }
+.contact-form { display:flex; flex-direction:column; gap:20px; }
+.contact-form__row { display:grid; grid-template-columns: 1fr 1fr; gap:20px; }
+.contact-form label { display:flex; flex-direction:column; gap:8px; font-size: 13.5px; font-weight:600; color: var(--ink-soft); }
+.contact-form input, .contact-form textarea {
+  font-family: var(--sans); font-size: 15px; color: var(--ink);
+  padding: 13px 16px; border-radius: 12px;
+  border: 1px solid rgba(20,40,80,.14);
+  background: rgba(255,255,255,.9);
+  transition: border-color .2s, box-shadow .2s;
+  resize: vertical;
+}
+.contact-form input:focus, .contact-form textarea:focus {
+  outline: none; border-color: var(--blue-2);
+  box-shadow: 0 0 0 4px rgba(47,107,255,.14);
+}
+.contact-form .btn-cta { align-self: flex-start; border:0; cursor:pointer; font-family:inherit; }
+.contact-form .btn-cta:disabled { opacity:.6; cursor:default; transform:none; }
+.contact-form__note { font-size: 13.5px; color: var(--muted); margin: -6px 0 0; min-height: 0; display:none; }
+.contact-form__note.is-visible { display:block; }
+.contact-form__note.is-success { color: #1a8f5e; font-weight:600; }
+
+.schedule-card { padding: clamp(26px, 3.4vw, 34px); }
+.schedule-card h3 { display:flex; align-items:center; gap:10px; font-family: var(--serif); font-weight:700; font-size:1.25rem; margin: 0 0 20px; }
+.schedule-card h3 .ic { font-size: 18px; }
+.schedule-list { display:flex; flex-direction:column; }
+.schedule-item {
+  display:flex; align-items:center; justify-content:space-between; gap:14px;
+  padding: 14px 0; border-bottom: 1px solid rgba(20,40,80,.08);
+}
+.schedule-item:last-child { border-bottom: 0; }
+.schedule-item b { display:block; font-size: 14.5px; color: var(--ink); }
+.schedule-item span { display:block; font-size: 12.5px; color: var(--muted); margin-top:2px; }
+.schedule-item__time { font-weight:700; color: var(--blue-2); font-size: 14.5px; white-space: nowrap; }
+.schedule-verse {
+  margin: 22px 0 0; padding: 16px 18px; border-radius: 14px;
+  background: rgba(47,107,255,.08); border-left: 3px solid var(--blue-2);
+  font-family: var(--serif); font-style: italic; font-size: 13.5px; line-height:1.6; color: var(--ink-soft);
+}
+.schedule-verse cite { display:block; margin-top:8px; font-style:normal; font-weight:600; color: var(--blue-2); font-size:12.5px; }
+
+@media (max-width: 860px) {
+  .contact-grid { grid-template-columns: 1fr; }
+  .contact-form__row { grid-template-columns: 1fr; }
 }
