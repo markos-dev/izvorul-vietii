@@ -43,12 +43,28 @@
   .event-card__body { padding:24px; }
 }
 
-/* ============================ ALBUM FOTO (galerie) ============================ */
-/* Albumele stau ascunse implicit — apar doar când e activă ancora lor
-   (#album-xxx), adică la apăsarea butonului „Vezi album foto". */
-.album-section { display: none; }
-.album-section.is-open { display: block; }
+/* ============================ PAGINA DETALIU EVENIMENT ============================ */
+/* Fiecare eveniment cu "id" are propria pagină (eveniment-<id>.html) —
+   pagina Evenimente afișează doar lista, fără conținutul evenimentelor. */
+.event-hero-light {
+  padding: calc(var(--nav-h) + 60px) 0 46px;
+  text-align: center;
+  background: var(--paper-2);
+}
+.event-hero-light h1 { margin: 0 0 10px; }
+.event-hero-light .event-meta { justify-content: center; margin: 20px 0 0; }
 
+.poster-frame {
+  max-width: 420px; margin: 0 auto;
+  border-radius: 24px; overflow: hidden;
+  box-shadow: 0 30px 70px -30px rgba(20,40,90,.5);
+  border: 1px solid rgba(20,40,80,.08);
+}
+.poster-frame img { width: 100%; display: block; }
+
+.event-detail__meta { justify-content: center; margin: 4px 0 6px; }
+
+/* ============================ ALBUM FOTO (galerie) ============================ */
 .gallery { display:grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 30px; }
 .gallery img {
   width:100%; height: 230px; object-fit: cover; border-radius: 16px;
@@ -61,9 +77,6 @@
   .gallery { grid-template-columns: repeat(2, 1fr); gap: 10px; }
   .gallery img { height: 150px; }
 }
-
-/* Ancorele albumelor — să nu rămână ascunse sub meniul fix la derulare */
-[id^="album-"] { scroll-margin-top: 100px; }
 
 /* ============================ LIGHTBOX (poză mărită + navigare) ============================ */
 .lightbox {

@@ -57,7 +57,6 @@ window.IZVOR_EVENTS = [
     meta1: { icon: "calendar", text: "27 Septembrie 2026" },
     meta2: { icon: "pin", text: "Str. Nucului nr. 13" },
     cta: "Detalii eveniment",
-    link: "evenimente.html",
     image: "images/eveniment-botez-toamna.jpg",
     imageFit: "contain"
   },
@@ -69,7 +68,6 @@ window.IZVOR_EVENTS = [
     meta1: { icon: "clock", text: "11 Aprilie 2026, Ora 11:00" },
     meta2: { icon: "pin", text: "Str. Nucului nr. 13" },
     cta: "Vezi album foto",
-    link: "evenimente.html",
     image: "images/eveniment-atelier-creativ-paste.jpg",
     album: [
       "images/album-atelier-creativ-paste/_DSC6525.jpg",
@@ -95,7 +93,6 @@ window.IZVOR_EVENTS = [
     meta1: { icon: "calendar", text: "Octombrie 2023" },
     meta2: { icon: "globe", text: "Comunitate" },
     cta: "Vezi album foto",
-    link: "evenimente.html#album-misiunea-sperantei",
     image: "https://images.unsplash.com/photo-1507692049790-de58290a4334?auto=format&fit=crop&w=1600&q=80",
     album: [
       "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=700&q=80",
@@ -125,10 +122,11 @@ window.IZVOR_EVENTS = [
       '<span>' + ic(e.meta2.icon) + ' ' + e.meta2.text + '</span>' +
       '</div>';
   }
-  // Linkul butonului: dacă evenimentul are album, duce automat la ancora albumului
-  // de pe pagina Evenimente (funcționează dinamic pentru orice eveniment nou).
+  // Linkul butonului: fiecare eveniment cu "id" are propria pagină dedicată
+  // (eveniment-<id>.html), cu poza mare și descrierea lui — nu se mai
+  // afișează conținutul evenimentelor pe pagina Evenimente.
   function hrefFor(e) {
-    if (e.album && e.album.length && e.id) return "evenimente.html#album-" + e.id;
+    if (e.id) return "eveniment-" + e.id + ".html";
     return e.link || "evenimente.html";
   }
   // Stilul imaginii de fundal: implicit "cover" (umple cadrul, poate tăia din poză).
@@ -199,55 +197,13 @@ window.IZVOR_EVENTS = [
     }).join("");
   }
 
-  /* --- Albume foto (evenimentele din arhivă, pe pagina Evenimente) --- */
-  var albums = document.getElementById("eventsAlbums");
-  if (albums) {
-    var withAlbum = EVENTS.filter(function (e) { return e.album && e.album.length; });
-    albums.innerHTML = withAlbum.map(function (e) {
-      return '<section class="section album-section" id="album-' + (e.id || "") + '">' +
-        '<div class="wrap">' +
-        '<div class="reveal" style="margin-bottom:6px;">' +
-        '<span class="eyebrow">Album foto</span>' +
-        '<h2 class="h-serif" style="margin-bottom:8px;">' + e.title + '</h2>' +
-        '<p class="lead" style="color:var(--muted);">' + e.meta1.text + ' · ' + e.meta2.text + '</p>' +
-        '</div>' +
-        '<div class="gallery reveal" data-album-id="' + (e.id || "") + '">' +
-        e.album.map(function (src, i) {
-          return '<img src="' + src + '" alt="' + e.title + '" loading="lazy" data-idx="' + i + '">';
-        }).join("") +
-        '</div>' +
-        '</div></section>';
-    }).join("");
-
-    // Albumele stau ascunse implicit — se arată DOAR albumul a cărui ancoră
-    // (#album-xxx) e activă în URL, adică atunci când cineva apasă butonul
-    // „Vezi album foto" al unui eveniment. Se actualizează și la navigare
-    // pe aceeași pagină (hashchange), nu doar la încărcare.
-    function showAlbumFromHash() {
-      var currentHash = window.location.hash;
-      var sections = albums.querySelectorAll(".album-section");
-      sections.forEach(function (sec) {
-        if ("#" + sec.id === currentHash) {
-          sec.classList.add("is-open");
-          sec.querySelectorAll(".reveal").forEach(function (el) { el.classList.add("in"); });
-        } else {
-          sec.classList.remove("is-open");
-        }
-      });
-      if (currentHash && currentHash.indexOf("#album-") === 0) {
-        window.setTimeout(function () {
-          var t = document.getElementById(currentHash.slice(1));
-          if (t) t.scrollIntoView({ behavior: "smooth", block: "start" });
-        }, 90);
-      }
-    }
-    showAlbumFromHash();
-    window.addEventListener("hashchange", showAlbumFromHash);
-
-    /* --- Lightbox: click pe o poză din album → se mărește, navigare stânga/dreapta --- */
-    var albumMap = {};
-    withAlbum.forEach(function (e) { albumMap[e.id || ""] = e.album; });
-
+  /* --- Lightbox generic: funcționează pe orice pagină care are un
+     ".gallery" cu imagini — pagina Evenimente nu mai afișează albume
+     inline, dar fiecare eveniment are acum propria pagină dedicată
+     (eveniment-<id>.html) cu galeria ei proprie; lightbox-ul citește
+     direct pozele din DOM, nu are nevoie de date din EVENTS. --- */
+  var galleries = document.querySelectorAll(".gallery");
+  if (galleries.length) {
     var lightbox = document.createElement("div");
     lightbox.className = "lightbox";
     lightbox.innerHTML =
@@ -268,8 +224,8 @@ window.IZVOR_EVENTS = [
       lbImg.src = currentAlbum[currentIdx];
       lbCounter.textContent = (currentIdx + 1) + " / " + currentAlbum.length;
     }
-    function openLightbox(albumId, idx) {
-      currentAlbum = albumMap[albumId] || [];
+    function openLightbox(albumEls, idx) {
+      currentAlbum = albumEls.map(function (img) { return img.getAttribute("src"); });
       currentIdx = idx;
       if (!currentAlbum.length) return;
       updateLightbox();
@@ -286,12 +242,12 @@ window.IZVOR_EVENTS = [
       updateLightbox();
     }
 
-    albums.addEventListener("click", function (ev) {
-      var img = ev.target.closest("img[data-idx]");
+    document.addEventListener("click", function (ev) {
+      var img = ev.target.closest(".gallery img");
       if (!img) return;
       var galleryEl = img.closest(".gallery");
-      var albumId = galleryEl ? galleryEl.getAttribute("data-album-id") : "";
-      openLightbox(albumId, parseInt(img.getAttribute("data-idx"), 10) || 0);
+      var imgs = Array.prototype.slice.call(galleryEl.querySelectorAll("img"));
+      openLightbox(imgs, imgs.indexOf(img));
     });
     lightbox.querySelector(".lightbox__close").addEventListener("click", closeLightbox);
     lightbox.querySelector(".lightbox__arrow--prev").addEventListener("click", function () { navLightbox(-1); });
