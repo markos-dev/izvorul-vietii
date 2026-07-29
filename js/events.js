@@ -16,7 +16,7 @@ window.IZVOR_EVENTS = [
   {
     id: "botez",
     category: "Arhivă evenimente",
-    title: "Botez",
+    title: "Botez Nou Testamentar Vara",
     iso: "2026-07-19",
     meta1: { icon: "clock", text: "19 Iulie 2026, Ora 10:00" },
     meta2: { icon: "pin", text: "Str. Nucului nr. 13" },
@@ -183,7 +183,7 @@ window.IZVOR_EVENTS = [
   if (albums) {
     var withAlbum = EVENTS.filter(function (e) { return e.album && e.album.length; });
     albums.innerHTML = withAlbum.map(function (e) {
-      return '<section class="section" id="album-' + (e.id || "") + '">' +
+      return '<section class="section album-section" id="album-' + (e.id || "") + '">' +
         '<div class="wrap">' +
         '<div class="reveal" style="margin-bottom:6px;">' +
         '<span class="eyebrow">Album foto</span>' +
@@ -198,15 +198,30 @@ window.IZVOR_EVENTS = [
         '</div></section>';
     }).join("");
 
-    // Dacă URL-ul conține o ancoră către un album (ex. #album-misiunea-sperantei),
-    // derulează la el DUPĂ ce albumele au fost generate.
-    var hash = window.location.hash;
-    if (hash && hash.indexOf("#album-") === 0) {
-      window.setTimeout(function () {
-        var t = document.getElementById(hash.slice(1));
-        if (t) t.scrollIntoView({ behavior: "smooth", block: "start" });
-      }, 90);
+    // Albumele stau ascunse implicit — se arată DOAR albumul a cărui ancoră
+    // (#album-xxx) e activă în URL, adică atunci când cineva apasă butonul
+    // „Vezi album foto" al unui eveniment. Se actualizează și la navigare
+    // pe aceeași pagină (hashchange), nu doar la încărcare.
+    function showAlbumFromHash() {
+      var currentHash = window.location.hash;
+      var sections = albums.querySelectorAll(".album-section");
+      sections.forEach(function (sec) {
+        if ("#" + sec.id === currentHash) {
+          sec.classList.add("is-open");
+          sec.querySelectorAll(".reveal").forEach(function (el) { el.classList.add("in"); });
+        } else {
+          sec.classList.remove("is-open");
+        }
+      });
+      if (currentHash && currentHash.indexOf("#album-") === 0) {
+        window.setTimeout(function () {
+          var t = document.getElementById(currentHash.slice(1));
+          if (t) t.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 90);
+      }
     }
+    showAlbumFromHash();
+    window.addEventListener("hashchange", showAlbumFromHash);
 
     /* --- Lightbox: click pe o poză din album → se mărește, navigare stânga/dreapta --- */
     var albumMap = {};

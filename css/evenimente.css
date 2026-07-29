@@ -44,6 +44,11 @@
 }
 
 /* ============================ ALBUM FOTO (galerie) ============================ */
+/* Albumele stau ascunse implicit — apar doar când e activă ancora lor
+   (#album-xxx), adică la apăsarea butonului „Vezi album foto". */
+.album-section { display: none; }
+.album-section.is-open { display: block; }
+
 .gallery { display:grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 30px; }
 .gallery img {
   width:100%; height: 230px; object-fit: cover; border-radius: 16px;
