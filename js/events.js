@@ -23,6 +23,7 @@ window.IZVOR_EVENTS = [
     cta: "Vezi album foto",
     image: "images/eveniment-botez.jpg",
     album: [
+      "images/album-botez/pozabotez-00-poster.jpg",
       "images/album-botez/pozabotez-01.jpg",
       "images/album-botez/pozabotez-02.jpg",
       "images/album-botez/pozabotez-03.jpg",
