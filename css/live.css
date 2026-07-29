@@ -1,0 +1,12 @@
+/* =========================================================
+   Pagina LIVE — stiluri specifice
+   ========================================================= */
+
+.live-frame { border-radius:24px; overflow:hidden; border:1px solid rgba(20,40,80,.1);
+  box-shadow:0 30px 60px -30px rgba(20,40,90,.4); aspect-ratio:16/9; width:100%;
+  background:linear-gradient(135deg,#0e1826,#1f2f4a); display:grid; place-items:center; color:#fff; text-align:center; padding:30px; }
+.live-badge { display:inline-flex; align-items:center; gap:8px; padding:7px 16px; border-radius:999px;
+  background:rgba(255,80,80,.16); border:1px solid rgba(255,80,80,.4); color:#ff6b6b; font-size:12px;
+  font-weight:700; letter-spacing:2px; text-transform:uppercase; margin-bottom:20px; }
+.live-badge .dot { width:9px;height:9px;border-radius:50%;background:#ff5252; animation:pulse 1.4s infinite; }
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}

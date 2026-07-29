@@ -12,48 +12,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=13">
-  <style>
-    .prog { display:flex; align-items:center; gap:22px; padding:24px 28px; border-radius:20px;
-      background:rgba(255,255,255,.72); border:1px solid rgba(20,40,80,.08);
-      box-shadow:0 20px 50px -34px rgba(20,40,90,.4); }
-    .prog + .prog { margin-top:16px; }
-    .prog__day { flex:0 0 128px; text-align:center; }
-    .prog__day b { display:block; font-family:var(--serif); font-size:1.4rem; color:var(--blue-2); }
-    .prog__day span { font-size:13px; letter-spacing:1px; text-transform:uppercase; color:var(--muted); }
-    .prog__body h3 { font-family:var(--serif); margin:0 0 4px; font-size:1.25rem; }
-    .prog__body p { margin:0; color:var(--muted); }
-    @media (max-width:600px){ .prog{flex-direction:column; text-align:center;} .prog__day{flex-basis:auto;} }
-
-    /* --- Evenimente viitoare (casete) --- */
-    .events-list { display:flex; flex-direction:column; gap:24px; }
-    .event-card {
-      display:flex; overflow:hidden; border-radius:24px;
-      background:rgba(255,255,255,.72);
-      border:1px solid rgba(20,40,80,.08);
-      box-shadow:0 24px 55px -34px rgba(20,40,90,.42);
-      -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px);
-      transition:transform .35s var(--ease), box-shadow .35s var(--ease);
-    }
-    .event-card:hover { transform:translateY(-5px); box-shadow:0 34px 65px -32px rgba(20,40,90,.5); }
-    .event-card__img { flex:0 0 300px; min-height:250px; background-size:cover; background-position:center; }
-    .event-card__body { padding:30px 34px; display:flex; flex-direction:column; align-items:flex-start; gap:12px; }
-    .event-badge {
-      display:inline-block; padding:6px 14px; border-radius:999px;
-      background:rgba(47,107,255,.12); color:var(--blue-2);
-      font-size:11px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase;
-    }
-    .event-card h3 { font-family:var(--serif); font-weight:700; font-size:1.6rem; margin:2px 0; color:var(--ink); }
-    .event-meta { display:flex; flex-wrap:wrap; gap:10px 28px; margin:2px 0 6px; }
-    .event-meta span { display:inline-flex; align-items:center; gap:9px; color:var(--ink-soft); font-size:14.5px; }
-    .event-meta svg { width:17px; height:17px; color:var(--blue-2); flex:none; }
-    .event-card .btn-cta { margin-top:6px; }
-    @media (max-width:720px){
-      .event-card { flex-direction:column; }
-      .event-card__img { flex-basis:auto; width:100%; height:200px; min-height:0; }
-      .event-card__body { padding:24px; }
-    }
-  </style>
+  <link rel="stylesheet" href="css/common.css?v=14">
+  <link rel="stylesheet" href="css/evenimente.css?v=14">
 </head>
 <body>
 
