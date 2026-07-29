@@ -87,16 +87,18 @@
     updateHighlight();
   }
 
-  /* ---------- Micro-parallax pe cardul hero (pointer) ---------- */
+  /* ---------- Micro-parallax pe cardul hero (pointer) ----------
+     Urmărește mișcarea mouse-ului pe tot ecranul (nu doar peste
+     panou), ca efectul de tilt să continue lin indiferent unde e
+     cursorul. Se resetează doar când mouse-ul chiar iese din fereastră. */
   const card = document.querySelector(".glass-card[data-tilt]");
   if (card && window.matchMedia("(hover: hover)").matches) {
-    card.addEventListener("mousemove", function (e) {
-      const r = card.getBoundingClientRect();
-      const x = (e.clientX - r.left) / r.width - 0.5;
-      const y = (e.clientY - r.top) / r.height - 0.5;
-      card.style.transform = "perspective(1000px) rotateY(" + (x * 4) + "deg) rotateX(" + (-y * 4) + "deg)";
+    window.addEventListener("mousemove", function (e) {
+      const x = e.clientX / window.innerWidth - 0.5;
+      const y = e.clientY / window.innerHeight - 0.5;
+      card.style.transform = "perspective(1000px) rotateY(" + (x * 6) + "deg) rotateX(" + (-y * 6) + "deg)";
     });
-    card.addEventListener("mouseleave", function () { card.style.transform = ""; });
+    document.addEventListener("mouseleave", function () { card.style.transform = ""; });
   }
 
   /* ---------- Countdown până la următorul serviciu (Duminică 10:00) ---------- */
