@@ -23,7 +23,19 @@ window.IZVOR_EVENTS = [
     cta: "Vezi album foto",
     image: "images/eveniment-botez.jpg",
     album: [
-      "images/album-botez/pozabotez-01.jpg"
+      "images/album-botez/pozabotez-01.jpg",
+      "images/album-botez/pozabotez-02.jpg",
+      "images/album-botez/pozabotez-03.jpg",
+      "images/album-botez/pozabotez-04.jpg",
+      "images/album-botez/pozabotez-05.jpg",
+      "images/album-botez/pozabotez-06.jpg",
+      "images/album-botez/pozabotez-07.jpg",
+      "images/album-botez/pozabotez-08.jpg",
+      "images/album-botez/pozabotez-09.jpg",
+      "images/album-botez/pozabotez-10.jpg",
+      "images/album-botez/pozabotez-11.jpg",
+      "images/album-botez/pozabotez-12.jpg",
+      "images/album-botez/pozabotez-13.jpg"
     ]
   },
   {
