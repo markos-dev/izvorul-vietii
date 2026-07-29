@@ -50,6 +50,18 @@ window.IZVOR_EVENTS = [
     image: "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=1600&q=80"
   },
   {
+    id: "botez-nou-testamentar-toamna",
+    category: "Evenimente viitoare",
+    title: "Botez Nou Testamentar Toamna",
+    iso: "2026-09-27",
+    meta1: { icon: "calendar", text: "27 Septembrie 2026" },
+    meta2: { icon: "pin", text: "Str. Nucului nr. 13" },
+    cta: "Detalii eveniment",
+    link: "evenimente.html",
+    image: "images/eveniment-botez-toamna.jpg",
+    imageFit: "contain"
+  },
+  {
     id: "atelier-creativ-de-paste",
     category: "Arhivă evenimente",
     title: "Atelier Creativ de Paște",
@@ -119,6 +131,15 @@ window.IZVOR_EVENTS = [
     if (e.album && e.album.length && e.id) return "evenimente.html#album-" + e.id;
     return e.link || "evenimente.html";
   }
+  // Stilul imaginii de fundal: implicit "cover" (umple cadrul, poate tăia din poză).
+  // Evenimentele cu imageFit:"contain" (ex: un poster cu text) se văd integral,
+  // nu ciuntite — cu bandă de fundal (letterbox) în loc de decupaj.
+  function imgStyle(e) {
+    if (e.imageFit === "contain") {
+      return "background-image:url('" + e.image + "');background-size:contain;background-repeat:no-repeat;background-position:center;background-color:#0e1826;";
+    }
+    return "background-image:url('" + e.image + "');";
+  }
 
   var EVENTS = (window.IZVOR_EVENTS || []).slice();
   // sortare descrescătoare după dată (cel mai nou primul)
@@ -129,7 +150,7 @@ window.IZVOR_EVENTS = [
   if (viewport && EVENTS.length) {
     viewport.innerHTML = EVENTS.map(function (e, i) {
       return '<article class="ec__slide' + (i === 0 ? ' is-active' : '') +
-        '" style="background-image:url(\'' + e.image + '\');">' +
+        '" style="' + imgStyle(e) + '">' +
         '<div class="ec__overlay"></div>' +
         '<div class="ec__inner"><div class="ec__card">' +
         '<span class="ec__eyebrow">' + e.category + '</span>' +
@@ -165,7 +186,7 @@ window.IZVOR_EVENTS = [
     list.innerHTML = EVENTS.map(function (e, i) {
       var delay = i === 1 ? " d1" : (i >= 2 ? " d2" : "");
       return '<article class="event-card reveal' + delay + '">' +
-        '<div class="event-card__img" style="background-image:url(\'' + e.image + '\');"></div>' +
+        '<div class="event-card__img" style="' + imgStyle(e) + '"></div>' +
         '<div class="event-card__body">' +
         '<span class="event-badge">' + e.category + '</span>' +
         '<h3>' + e.title + '</h3>' +
