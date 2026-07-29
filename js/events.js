@@ -30,9 +30,27 @@ window.IZVOR_EVENTS = [
     iso: "2026-04-11",
     meta1: { icon: "clock", text: "11 Aprilie 2026, Ora 10:00" },
     meta2: { icon: "pin", text: "Str. Nucului nr. 13" },
-    cta: "Detalii eveniment",
+    cta: "Vezi album foto",
     link: "evenimente.html",
-    image: "images/eveniment-atelier-creativ-paste.jpg"
+    image: "images/eveniment-atelier-creativ-paste.jpg",
+    album: [
+      "images/album-atelier-creativ-paste/_DSC6525.jpg",
+      "images/album-atelier-creativ-paste/_DSC6535.jpg",
+      "images/album-atelier-creativ-paste/_DSC6548.jpg",
+      "images/album-atelier-creativ-paste/_DSC6551.jpg",
+      "images/album-atelier-creativ-paste/_DSC6570.jpg",
+      "images/album-atelier-creativ-paste/_DSC6621.jpg",
+      "images/album-atelier-creativ-paste/_DSC6638.jpg",
+      "images/album-atelier-creativ-paste/_DSC6643.jpg",
+      "images/album-atelier-creativ-paste/_DSC6671.jpg",
+      "images/album-atelier-creativ-paste/_DSC6680.jpg",
+      "images/album-atelier-creativ-paste/_DSC6688.jpg",
+      "images/album-atelier-creativ-paste/_DSC6697.jpg",
+      "images/album-atelier-creativ-paste/_DSC6734.jpg",
+      "images/album-atelier-creativ-paste/_DSC6739.jpg",
+      "images/album-atelier-creativ-paste/_DSC6750.jpg",
+      "images/album-atelier-creativ-paste/_DSC6752.jpg"
+    ]
   },
   {
     id: "misiunea-sperantei",
